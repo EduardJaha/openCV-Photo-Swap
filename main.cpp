@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
    */
   cv::Mat image = cv::imread("../images/elefant.jpg");
   /**
-   * @brief Size will calculate all dimensions of the uploaded image saved as
+   * @brief Size will be calculate all dimensions of the uploaded image saved as
    * "image"
    */
   cv::Size sz = image.size();
