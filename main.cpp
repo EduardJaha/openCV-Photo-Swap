@@ -115,7 +115,7 @@ int main(int argc, char **argv) {
       cv::Mat cropped_image4 = image(r4);
 
       /**
-       * @brief Print the size of the colums and rows of all the 4 cuted images
+       * @brief Print the size of the colums and rows of all the 4 cuted images 
        */
       std::cout << "img1 cols : " << cropped_image1.cols << "\t"
                 << "img1rows : " << cropped_image1.rows << std::endl;
