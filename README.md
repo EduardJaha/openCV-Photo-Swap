@@ -51,5 +51,4 @@ For the project to be runned and build, you need to open the terminal and do the
 $ cmake ..
 $ cmake --build .
 $ ./Example_5_swap_exec
-```# openCV_tr
-# openCV_tr
+```
