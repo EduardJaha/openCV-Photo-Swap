@@ -11,13 +11,12 @@ The aim of this project is to implement OpenCV in an example, where we will read
 
 ---
 
+
 The project will be in created in the head file called Example_5_swap. In the following you can see the dependencies of the files.
 
 
 ### Example_5_swap
 * images/
-* include/
-* src/ 
 * CMakeLists.txt
 * main.cpp
 

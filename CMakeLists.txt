@@ -1,3 +1,4 @@
+cmake_minimum_required (VERSION 2.8.11)
 project(example_5_swap)
 
 find_package(OpenCV REQUIRED)
