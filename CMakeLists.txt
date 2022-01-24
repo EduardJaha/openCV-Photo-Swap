@@ -3,6 +3,12 @@ project(example_5_swap)
 
 find_package(OpenCV REQUIRED)
 
+set(CMAKE_CXX_FLAGS 
+  "-O1 \
+  -O2 \
+  -O3"
+)
+
 include_directories(
   include/ 
   ${OpenCV_INCLUDE_DIRS}
