@@ -24,10 +24,10 @@ int main(int argc, char **argv) {
   cv::Mat img = cv::imread(argv[1], cv::IMREAD_UNCHANGED);
 
   if (!img.empty()) {
-    cv::Size sz = img.size();
+    cv::Size size_of = img.size();
 
-    int Col_Remainder = sz.width % 2;
-    int Row_Remainder = sz.height % 2;
+    int Col_Remainder = size_of.width % 2;
+    int Row_Remainder = size_of.height % 2;
 
     if (Row_Remainder == 0 && Col_Remainder == 0) {
       swap.evenC_evenR(img);

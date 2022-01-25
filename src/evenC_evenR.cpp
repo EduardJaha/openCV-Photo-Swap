@@ -12,13 +12,15 @@
 #include "Swapper/swapper.hpp"
 
 void Swapper::evenC_evenR(const cv::Mat &image) {
-  cv::Size sz = image.size();
+  cv::Size size_of = image.size();
 
-  cv::Rect rectangleTopLeft(0, 0, sz.width / 2, sz.height / 2);
-  cv::Rect rectangleTopRight(sz.width / 2, 0, sz.width / 2, sz.height / 2);
-  cv::Rect rectangleBottomLeft(0, sz.height / 2, sz.width / 2, sz.height / 2);
-  cv::Rect rectangleBottomRight(sz.width / 2, sz.height / 2, sz.width / 2,
-                                sz.height / 2);
+  cv::Rect rectangleTopLeft(0, 0, size_of.width / 2, size_of.height / 2);
+  cv::Rect rectangleTopRight(size_of.width / 2, 0, size_of.width / 2,
+                             size_of.height / 2);
+  cv::Rect rectangleBottomLeft(0, size_of.height / 2, size_of.width / 2,
+                               size_of.height / 2);
+  cv::Rect rectangleBottomRight(size_of.width / 2, size_of.height / 2,
+                                size_of.width / 2, size_of.height / 2);
 
   cv::Mat cropped_image1 = image(rectangleTopLeft);
   cv::Mat cropped_image2 = image(rectangleTopRight);

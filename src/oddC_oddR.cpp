@@ -12,15 +12,16 @@
 #include "Swapper/swapper.hpp"
 
 void Swapper::oddC_oddR(const cv::Mat &image) {
-  cv::Size sz = image.size();
+  cv::Size size_of = image.size();
 
-  cv::Rect rectangleTopLeft(0, 0, (sz.width / 2) + 1, sz.height / 2);
-  cv::Rect rectangleTopRight(sz.width / 2, 0, (sz.width / 2) + 1,
-                             sz.height / 2);
-  cv::Rect rectangleBottomLeft(0, sz.height / 2, (sz.width / 2) + 1,
-                               (sz.height / 2) + 1);
-  cv::Rect rectangleBottomRight(sz.width / 2, sz.height / 2, (sz.width / 2) + 1,
-                                (sz.height / 2) + 1);
+  cv::Rect rectangleTopLeft(0, 0, (size_of.width / 2) + 1, size_of.height / 2);
+  cv::Rect rectangleTopRight(size_of.width / 2, 0, (size_of.width / 2) + 1,
+                             size_of.height / 2);
+  cv::Rect rectangleBottomLeft(0, size_of.height / 2, (size_of.width / 2) + 1,
+                               (size_of.height / 2) + 1);
+  cv::Rect rectangleBottomRight(size_of.width / 2, size_of.height / 2,
+                                (size_of.width / 2) + 1,
+                                (size_of.height / 2) + 1);
 
   cv::Mat cropped_image1 = image(rectangleTopLeft);
   cv::Mat cropped_image2 = image(rectangleTopRight);
@@ -38,16 +39,19 @@ void Swapper::oddC_oddR(const cv::Mat &image) {
 
   cv::Mat resImg(image.rows, image.cols, image.type(), cv::Scalar(0, 0, 200));
 
-  cv::Size sz_1 = resImg.size();
+  cv::Size size_of_res = resImg.size();
 
-  cv::Rect rectangleTopLeft_resImg(0, 0, (sz_1.width / 2) + 1,
-                                   (sz_1.height / 2) + 1);
-  cv::Rect rectangleTopRight_resImg(sz_1.width / 2, 0, (sz_1.width / 2) + 1,
-                                    (sz_1.height / 2) + 1);
-  cv::Rect rectangleBottomLeft_resImg(0, (sz_1.height / 2) + 1,
-                                      (sz_1.width / 2) + 1, (sz_1.height / 2));
-  cv::Rect rectangleBottomRight_resImg(sz_1.width / 2, (sz_1.height / 2) + 1,
-                                       (sz_1.width / 2 + 1), sz_1.height / 2);
+  cv::Rect rectangleTopLeft_resImg(0, 0, (size_of_res.width / 2) + 1,
+                                   (size_of_res.height / 2) + 1);
+  cv::Rect rectangleTopRight_resImg(size_of_res.width / 2, 0,
+                                    (size_of_res.width / 2) + 1,
+                                    (size_of_res.height / 2) + 1);
+  cv::Rect rectangleBottomLeft_resImg(0, (size_of_res.height / 2) + 1,
+                                      (size_of_res.width / 2) + 1,
+                                      (size_of_res.height / 2));
+  cv::Rect rectangleBottomRight_resImg(
+      size_of_res.width / 2, (size_of_res.height / 2) + 1,
+      (size_of_res.width / 2) + 1, size_of_res.height / 2);
 
   cropped_image1.copyTo(resImg(rectangleBottomRight_resImg));
   cropped_image2.copyTo(resImg(rectangleBottomLeft_resImg));
