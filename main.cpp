@@ -26,22 +26,25 @@ int main(int argc, char **argv) {
   if (!img.empty()) {
     cv::Size sz = img.size();
 
-    if (sz.height % 2 == 0 && sz.width % 2 == 0) {
+    int Col_Remainder = sz.width % 2;
+    int Row_Remainder = sz.height % 2;
+
+    if (Row_Remainder == 0 && Col_Remainder == 0) {
       swap.evenC_evenR(img);
       return 0;
     }
 
-    if (sz.height % 2 == 1 && sz.width % 2 == 0) {
+    if (Row_Remainder != 0 && Col_Remainder == 0) {
       swap.evenC_oddR(img);
       return 0;
     }
 
-    if (sz.height % 2 == 0 && sz.width % 2 == 1) {
+    if (Row_Remainder == 0 && Col_Remainder != 0) {
       swap.oddC_evenR(img);
       return 0;
     }
 
-    if (sz.height % 2 == 1 && sz.width % 2 == 1) {
+    if (Row_Remainder != 0 && Col_Remainder != 0) {
       swap.oddC_oddR(img);
       return 0;
     }
