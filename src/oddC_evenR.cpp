@@ -11,18 +11,20 @@
 
 #include "Swapper/swapper.hpp"
 
-void Swapper::oddC_evenR(cv::Mat image) {
+void Swapper::oddC_evenR(const cv::Mat &image) {
   cv::Size sz = image.size();
 
-  cv::Rect r1(0, 0, (sz.width / 2) + 1, sz.height / 2);
-  cv::Rect r2(sz.width / 2, 0, (sz.width / 2), sz.height / 2);
-  cv::Rect r3(0, sz.height / 2, (sz.width / 2) + 1, sz.height / 2);
-  cv::Rect r4(sz.width / 2, sz.height / 2, (sz.width / 2), sz.height / 2);
+  cv::Rect rectangleTopLeft(0, 0, (sz.width / 2) + 1, sz.height / 2);
+  cv::Rect rectangleTopRight(sz.width / 2, 0, (sz.width / 2), sz.height / 2);
+  cv::Rect rectangleBottomLeft(0, sz.height / 2, (sz.width / 2) + 1,
+                               sz.height / 2);
+  cv::Rect rectangleBottomRight(sz.width / 2, sz.height / 2, (sz.width / 2),
+                                sz.height / 2);
 
-  cv::Mat cropped_image1 = image(r1);
-  cv::Mat cropped_image2 = image(r2);
-  cv::Mat cropped_image3 = image(r3);
-  cv::Mat cropped_image4 = image(r4);
+  cv::Mat cropped_image1 = image(rectangleTopLeft);
+  cv::Mat cropped_image2 = image(rectangleTopRight);
+  cv::Mat cropped_image3 = image(rectangleBottomLeft);
+  cv::Mat cropped_image4 = image(rectangleBottomRight);
 
   std::cout << "img1 cols : " << cropped_image1.cols << "\t"
             << "img1rows : " << cropped_image1.rows << std::endl;
@@ -37,16 +39,18 @@ void Swapper::oddC_evenR(cv::Mat image) {
 
   cv::Size sz_1 = resImg.size();
 
-  cv::Rect r1_1(0, 0, (sz_1.width / 2), sz_1.height / 2);
-  cv::Rect r2_2(sz_1.width / 2, 0, (sz_1.width / 2) + 1, sz_1.height / 2);
-  cv::Rect r3_3(0, (sz_1.height / 2), (sz_1.width / 2), (sz_1.height / 2));
-  cv::Rect r4_4(sz_1.width / 2, sz_1.height / 2, (sz_1.width / 2) + 1,
-                sz_1.height / 2);
+  cv::Rect rectangleTopLeft_resImg(0, 0, (sz_1.width / 2), sz_1.height / 2);
+  cv::Rect rectangleTopRight_resImg(sz_1.width / 2, 0, (sz_1.width / 2) + 1,
+                                    sz_1.height / 2);
+  cv::Rect rectangleBottomLeft_resImg(0, (sz_1.height / 2), (sz_1.width / 2),
+                                      (sz_1.height / 2));
+  cv::Rect rectangleBottomRight_resImg(sz_1.width / 2, sz_1.height / 2,
+                                       (sz_1.width / 2) + 1, sz_1.height / 2);
 
-  cropped_image1.copyTo(resImg(r4_4));
-  cropped_image2.copyTo(resImg(r3_3));
-  cropped_image3.copyTo(resImg(r2_2));
-  cropped_image4.copyTo(resImg(r1_1));
+  cropped_image1.copyTo(resImg(rectangleBottomRight_resImg));
+  cropped_image2.copyTo(resImg(rectangleBottomLeft_resImg));
+  cropped_image3.copyTo(resImg(rectangleTopRight_resImg));
+  cropped_image4.copyTo(resImg(rectangleTopLeft_resImg));
 
   cv::namedWindow("Swapping", cv::WINDOW_NORMAL);
   cv::imshow("Swapping", resImg);

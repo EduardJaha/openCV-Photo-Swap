@@ -11,18 +11,19 @@
 
 #include "Swapper/swapper.hpp"
 
-void Swapper::evenC_evenR(cv::Mat image) {
+void Swapper::evenC_evenR(const cv::Mat &image) {
   cv::Size sz = image.size();
 
-  cv::Rect r1(0, 0, sz.width / 2, sz.height / 2);
-  cv::Rect r2(sz.width / 2, 0, sz.width / 2, sz.height / 2);
-  cv::Rect r3(0, sz.height / 2, sz.width / 2, sz.height / 2);
-  cv::Rect r4(sz.width / 2, sz.height / 2, sz.width / 2, sz.height / 2);
+  cv::Rect rectangleTopLeft(0, 0, sz.width / 2, sz.height / 2);
+  cv::Rect rectangleTopRight(sz.width / 2, 0, sz.width / 2, sz.height / 2);
+  cv::Rect rectangleBottomLeft(0, sz.height / 2, sz.width / 2, sz.height / 2);
+  cv::Rect rectangleBottomRight(sz.width / 2, sz.height / 2, sz.width / 2,
+                                sz.height / 2);
 
-  cv::Mat cropped_image1 = image(r1);
-  cv::Mat cropped_image2 = image(r2);
-  cv::Mat cropped_image3 = image(r3);
-  cv::Mat cropped_image4 = image(r4);
+  cv::Mat cropped_image1 = image(rectangleTopLeft);
+  cv::Mat cropped_image2 = image(rectangleTopRight);
+  cv::Mat cropped_image3 = image(rectangleBottomLeft);
+  cv::Mat cropped_image4 = image(rectangleBottomRight);
 
   std::cout << "img1 cols : " << cropped_image1.cols << "\t"
             << "img1rows : " << cropped_image1.rows << std::endl;
@@ -36,10 +37,10 @@ void Swapper::evenC_evenR(cv::Mat image) {
   cv::Mat resImg(image.rows, image.cols, image.type(),
                  cv::Scalar(200, 100, 50));
 
-  cropped_image1.copyTo(resImg(r4));
-  cropped_image2.copyTo(resImg(r3));
-  cropped_image3.copyTo(resImg(r2));
-  cropped_image4.copyTo(resImg(r1));
+  cropped_image1.copyTo(resImg(rectangleBottomRight));
+  cropped_image2.copyTo(resImg(rectangleBottomLeft));
+  cropped_image3.copyTo(resImg(rectangleTopRight));
+  cropped_image4.copyTo(resImg(rectangleTopLeft));
 
   cv::namedWindow("Swapping", cv::WINDOW_NORMAL);
   cv::imshow("Swapping", resImg);

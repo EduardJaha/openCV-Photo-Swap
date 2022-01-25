@@ -15,6 +15,12 @@
 int main(int argc, char **argv) {
   Swapper swap;
 
+  if (argc != 2) {
+    std::cout << "Please write write two aguments to run the program"
+              << std::endl;
+    return -1;
+  }
+
   cv::Mat img = cv::imread(argv[1], cv::IMREAD_UNCHANGED);
 
   if (!img.empty()) {
