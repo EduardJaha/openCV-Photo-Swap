@@ -9,6 +9,7 @@
  * @copyright Copyright (c) 2022
  *
  */
+#include <iostream>
 
 #include "Swapper/swapper.hpp"
 
@@ -24,10 +25,10 @@ int main(int argc, char **argv) {
   cv::Mat img = cv::imread(argv[1], cv::IMREAD_UNCHANGED);
 
   if (!img.empty()) {
-    cv::Size size_of = img.size();
+    cv::Size size_of_img = img.size();
 
-    int Col_Remainder = size_of.width % 2;
-    int Row_Remainder = size_of.height % 2;
+    int Col_Remainder = size_of_img.width % 2;
+    int Row_Remainder = size_of_img.height % 2;
 
     if (Row_Remainder == 0 && Col_Remainder == 0) {
       swap.evenC_evenR(img);
