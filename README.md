@@ -23,10 +23,7 @@ The project will be in created in the head file called Example_5_swap. In the fo
     * swapper.hpp
 
 * src/
-  * evenC_evenR.cpp
-  * evenC_oddR.cpp
-  * oddC_evenR.cpp
-  * oddC_oddR.cpp
+  * swapper.cpp
   
 * CMakeLists.txt
 * Doxyfile

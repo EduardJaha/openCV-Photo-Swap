@@ -16,10 +16,6 @@ include_directories(
 
 add_library( ${PROJECT_NAME}_lib
   src/swapper.cpp
-  # src/evenC_evenR.cpp
-  # src/evenC_oddR.cpp
-  # src/oddC_evenR.cpp
-  # src/oddC_oddR.cpp
 )
 
 add_executable( ${PROJECT_NAME}_exec
