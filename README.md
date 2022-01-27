@@ -17,7 +17,16 @@ The project will be in created in the head file called Example_5_swap. In the fo
 
 ### Example_5_swap
 * images/
+
+* include/
+  * Swapper/
+    * swapper.hpp
+
+* src/
+  * swapper.cpp
+  
 * CMakeLists.txt
+* Doxyfile
 * main.cpp
 
 ---
@@ -35,6 +44,7 @@ $ git clone https://github.com/opencv/opencv.git
 $ cd OpenCV
 $ mkdir build
 $ cd build
+$ cmake ..
 $ make
 $ sudo make install
 ```
@@ -49,5 +59,5 @@ For the project to be runned and build, you need to open the terminal and do the
 /Example_5_swap$ cd build
 $ cmake ..
 $ cmake --build .
-$ ./Example_5_swap_exec
+$ ./Example_5_swap_exec <path of the image file>
 ```
