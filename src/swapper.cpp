@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2022
  *
  */
-#include "Swapper/swapper.hpp"
+#include "swapper.hpp"
 
 #include <iostream>
 
@@ -29,9 +29,11 @@ void Swapper::sizes(const cv::Mat &image) {
   std::cout << "RectangleTopRight cols : " << cropped_image2.cols << "\t"
             << "RectangleTopRight rows : " << cropped_image2.rows << std::endl;
   std::cout << "RectangleBottomLeft cols : " << cropped_image3.cols << "\t"
-            << "RectangleBottomLeft rows : " << cropped_image3.rows << std::endl;
+            << "RectangleBottomLeft rows : " << cropped_image3.rows
+            << std::endl;
   std::cout << "RectangleBottomRight cols : " << cropped_image4.cols << "\t"
-            << "RectangleBottomRight rows : " << cropped_image4.rows << std::endl;
+            << "RectangleBottomRight rows : " << cropped_image4.rows
+            << std::endl;
 }
 
 void Swapper::cropped_blankImg(const cv::Mat &blankImg,
@@ -45,13 +47,7 @@ void Swapper::cropped_blankImg(const cv::Mat &blankImg,
   cropped_image4.copyTo(blankImg(rectangleTopLeft_blankImg));
 }
 
-void Swapper::display(const cv::Mat &blankImg) {
-  cv::namedWindow("Swapping", cv::WINDOW_NORMAL);
-  cv::imshow("Swapping", blankImg);
-  cv::waitKey(0);
-}
-
-void Swapper::evenC_evenR(const cv::Mat &image) {
+cv::Mat Swapper::evenC_evenR(const cv::Mat &image) {
   cv::Size size_of_img = image.size();
 
   cv::Rect rectangleTopLeft(0, 0, size_of_img.width / 2,
@@ -76,10 +72,10 @@ void Swapper::evenC_evenR(const cv::Mat &image) {
   cropped_image3.copyTo(blankImg(rectangleTopRight));
   cropped_image4.copyTo(blankImg(rectangleTopLeft));
 
-  display(blankImg);
+  return blankImg;
 }
 
-void Swapper::evenC_oddR(const cv::Mat &image) {
+cv::Mat Swapper::evenC_oddR(const cv::Mat &image) {
   cv::Size size_of_img = image.size();
 
   cv::Rect rectangleTopLeft(0, 0, size_of_img.width / 2,
@@ -117,10 +113,10 @@ void Swapper::evenC_oddR(const cv::Mat &image) {
                    rectangleBottomLeft_blankImg, rectangleTopRight_blankImg,
                    rectangleTopLeft_blankImg);
 
-  display(blankImg);
+  return blankImg;
 }
 
-void Swapper::oddC_evenR(const cv::Mat &image) {
+cv::Mat Swapper::oddC_evenR(const cv::Mat &image) {
   cv::Size size_of_img = image.size();
 
   cv::Rect rectangleTopLeft(0, 0, (size_of_img.width / 2) + 1,
@@ -159,10 +155,10 @@ void Swapper::oddC_evenR(const cv::Mat &image) {
                    rectangleBottomLeft_blankImg, rectangleTopRight_blankImg,
                    rectangleTopLeft_blankImg);
 
-  display(blankImg);
+  return blankImg;
 }
 
-void Swapper::oddC_oddR(const cv::Mat &image) {
+cv::Mat Swapper::oddC_oddR(const cv::Mat &image) {
   cv::Size size_of_img = image.size();
 
   cv::Rect rectangleTopLeft(0, 0, (size_of_img.width / 2) + 1,
@@ -202,5 +198,5 @@ void Swapper::oddC_oddR(const cv::Mat &image) {
                    rectangleBottomLeft_blankImg, rectangleTopRight_blankImg,
                    rectangleTopLeft_blankImg);
 
-  display(blankImg);
+  return blankImg;
 }

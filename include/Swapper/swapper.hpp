@@ -32,28 +32,28 @@ class Swapper {
    *
    * @param image to be displayed
    */
-  void evenC_evenR(const cv::Mat &image);
+  cv::Mat evenC_evenR(const cv::Mat &image);
   /**
    * @brief This method is used to display a swapped image with even number of
    * coloms and odd number of rows
    *
    * @param image to be displayed
    */
-  void evenC_oddR(const cv::Mat &image);
+  cv::Mat evenC_oddR(const cv::Mat &image);
   /**
    * @brief This method is used to display a swaped imaged with odd number of
    * coloms and even number of rows
    *
    * @param image to be displayed
    */
-  void oddC_evenR(const cv::Mat &image);
+  cv::Mat oddC_evenR(const cv::Mat &image);
   /**
    * @brief This method is used to display a swaped imaged with odd number of
    * coloms and odd number of rows
    *
    * @param image to be displayed
    */
-  void oddC_oddR(const cv::Mat &image);
+  cv::Mat oddC_oddR(const cv::Mat &image);
   /**
    * @brief This method is used to crop the original image
    *
