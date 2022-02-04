@@ -67,7 +67,7 @@ class Swapper {
                    const cv::Rect &rectangleTopRight,
                    const cv::Rect &rectangleBottomLeft,
                    const cv::Rect &rectangleBottomRight);
-  /**
+   /*
    * @brief This method is used to crop the blank image
    *
    * @param blankImg
